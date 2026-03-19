@@ -21,10 +21,20 @@ class Program
     const uint MOUSEEVENTF_LEFTDOWN = 0x0002;
     const uint MOUSEEVENTF_LEFTUP = 0x0004;
     
+    const int HK1 = 1;
+    const int HK2 = 2;
+    const int HK3 = 3;
+    const int HK4 = 4;
+    const int HK5 = 5;
+
     static void Main()
     {
         Console.WriteLine("Starting cursor position changer...");
-        RegisterHotKey(IntPtr.Zero, 1, 0,(uint)ConsoleKey.Tab); //u can rebind this key on another
+        RegisterHotKey(IntPtr.Zero, HK1, 0,(uint)ConsoleKey.Tab); 
+        RegisterHotKey(IntPtr.Zero, HK2, 0,(uint)ConsoleKey.Q);
+        RegisterHotKey(IntPtr.Zero, HK3, 0,(uint)ConsoleKey.W);
+        RegisterHotKey(IntPtr.Zero, HK4, 0,(uint)ConsoleKey.E);
+        RegisterHotKey(IntPtr.Zero, HK5, 0,(uint)ConsoleKey.D);
         
         MSG msg;
 
@@ -32,11 +42,46 @@ class Program
         {
             if (msg.message == WM_HOTKEY)
             {
-                SetCursorPos(750, 243);
+                int hotkeyId = (int)msg.wParam;
+
+                switch (hotkeyId)
+                {
+                    case HK1:
+                        SetCursorPos(750, 243);
                 
-                Thread.Sleep(50);
-                mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, UIntPtr.Zero);
-                mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, UIntPtr.Zero);
+                        Thread.Sleep(50);
+                        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, UIntPtr.Zero);
+                        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, UIntPtr.Zero);
+                        break;
+                    case HK2:
+                        SetCursorPos(450, 427);
+                
+                        Thread.Sleep(50);
+                        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, UIntPtr.Zero);
+                        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, UIntPtr.Zero);
+                        break;
+                    case HK3:
+                        SetCursorPos(690, 505);
+                
+                        Thread.Sleep(50);
+                        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, UIntPtr.Zero);
+                        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, UIntPtr.Zero);
+                        break;
+                    case HK4:
+                        SetCursorPos(690, 585);
+                
+                        Thread.Sleep(50);
+                        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, UIntPtr.Zero);
+                        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, UIntPtr.Zero);
+                        break;
+                    case HK5:
+                        SetCursorPos(690, 440);
+                
+                        Thread.Sleep(50);
+                        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, UIntPtr.Zero);
+                        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, UIntPtr.Zero);
+                        break;
+                }
             }
         }
     }
