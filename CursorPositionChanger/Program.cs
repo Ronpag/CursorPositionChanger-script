@@ -21,11 +21,7 @@ class Program
     const uint MOUSEEVENTF_LEFTDOWN = 0x0002;
     const uint MOUSEEVENTF_LEFTUP = 0x0004;
     
-    const int HK1 = 1;
-    const int HK2 = 2;
-    const int HK3 = 3;
-    const int HK4 = 4;
-    const int HK5 = 5;
+    const int HK1 = 1, HK2 = 2, HK3 = 3, HK4 = 4, HK5 = 5;
 
     static void Main()
     {
@@ -47,43 +43,32 @@ class Program
                 switch (hotkeyId)
                 {
                     case HK1:
-                        SetCursorPos(750, 243);
-                
-                        Thread.Sleep(50);
-                        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, UIntPtr.Zero);
-                        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, UIntPtr.Zero);
+                        click(750, 243);
                         break;
                     case HK2:
-                        SetCursorPos(450, 427);
-                
-                        Thread.Sleep(50);
-                        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, UIntPtr.Zero);
-                        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, UIntPtr.Zero);
+                        click(450, 427);
                         break;
                     case HK3:
-                        SetCursorPos(690, 505);
-                
-                        Thread.Sleep(50);
-                        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, UIntPtr.Zero);
-                        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, UIntPtr.Zero);
+                        click(690, 505);
                         break;
                     case HK4:
-                        SetCursorPos(690, 585);
-                
-                        Thread.Sleep(50);
-                        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, UIntPtr.Zero);
-                        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, UIntPtr.Zero);
+                        click(690, 585);
                         break;
                     case HK5:
-                        SetCursorPos(690, 440);
-                
-                        Thread.Sleep(50);
-                        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, UIntPtr.Zero);
-                        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, UIntPtr.Zero);
+                        click(690, 440);
                         break;
                 }
             }
         }
+    }
+
+    static void click(int x, int y)
+    {
+        SetCursorPos(x, y);
+        
+        Thread.Sleep(50);
+        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, UIntPtr.Zero);
+        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, UIntPtr.Zero);
     }
 }
 
